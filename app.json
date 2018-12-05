@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/shelf/index",
+    "pages/my/index",
+    "pages/login/index",
+    "pages/search/index",
+    "pages/orders/index",
+    "pages/repay/index",
+    "pages/balance/index",
+    "pages/submit/index",
+    "pages/orders/detail",
+    "pages/coupons/index",
+    "pages/shelf1/index",
+    "pages/settings/index",
+    "pages/settings/password",
+    "pages/readme/recharge"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#b20000",
+    "navigationBarTitleText": "兵圈购",
+    "navigationBarTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#b20000",
+    "borderStyle": "grey",
+    "backgroundColor": "#fff",
+    "box-shadow": "0 0 6px 0",
+    "list": [
+      {
+        "pagePath": "pages/shelf1/index",
+        "iconPath": "img/nav/shelf-off.png",
+        "selectedIconPath": "img/nav/shelf-on.png",
+        "text": "货架"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "img/nav/my-off.png",
+        "selectedIconPath": "img/nav/my-on.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

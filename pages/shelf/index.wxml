@@ -1,0 +1,63 @@
+<!--pages/shelf/index.wxml-->
+<view>
+
+  <!-- 加载 -->
+  <view class="container" wx:if="{{ spinShow }}">
+    <i-spin fix></i-spin>
+  </view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <view>
+    <van-tabs active="{{ active }}">
+      <block wx:for="{{categories}}" wx:for-item="category" wx:key="id">
+        <van-tab title="{{category.name}}">
+          <view class="page__bd">
+            <view class="weui-grids">
+              <block wx:for="{{goodslist}}" wx:for-item="item" wx:key="goods_id">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active" wx:if="{{item.type_id == category.id}}">
+                  <image class="weui-grid__icon" src="{{item.goods_img}}" />
+                  <view class="weui-grid__label">{{item.goods_name}}</view>
+                  <view>
+                    {{item.shop_price}}
+                    <van-stepper id="{{item.id}}" value="{{item.count}}" integer min="0" max="{{item.current_qty}}" step="1" bind:change="onChange" data-bar_code="{{item.bar_code}}" data-goods_name="{{item.goods_name}}" data-shop_price="{{item.shop_price}}" data-id="{{item.id}}"
+                    />
+                  </view>
+                </navigator>
+              </block>
+            </view>
+          </view>
+        </van-tab>
+      </block>
+    </van-tabs>
+  </view>
+
+  <!-- 二维码 -->
+  <view bindtap='scanCode' class="scan-box">
+    <image class="scan-img" src="../../img/nav/code.png"></image>
+  </view>
+
+  <!-- 搜索 -->
+  <view bindtap='searchGoods' class="search-box">
+    <image class="search-img" src="../../img/nav/search.png"></image>
+  </view>
+
+  <!-- 购物车 -->
+  <van-transition name="fade-up" show="{{show}}" name="fade-up" custom-class="shopping-cart">
+    <van-submit-bar price="{{ totalprice }}" button-text="提交订单" bind:submit="goSubmit">
+
+      <view class="weui-cell__hd" style="position: relative;margin-left: 10px;" bindtap='showList'>
+        <wux-icon size="40" color="#b20000" type="ios-cart" />
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{totalcount}}</view>
+      </view>
+
+    </van-submit-bar>
+  </van-transition>
+
+  <!-- 弹出货品清单 -->
+  <van-popup show="{{ popupshow }}" position="bottom" bind:close="onClose" close-on-click-overlay="true">
+    <view class="cart-list">清单</view>
+  </van-popup>
+
+</view>

@@ -1,0 +1,22 @@
+{
+  "navigationBarTitleText": "补款",
+  "usingComponents": {
+    "van-toast": "../../vant_dist/toast/index",
+    "van-cell": "../../vant_dist/cell/index",
+    "van-cell-group": "../../vant_dist/cell-group/index",
+    "van-radio": "../../vant_dist/radio/index",
+    "van-radio-group": "../../vant_dist/radio-group/index",
+    "van-button": "../../vant_dist/button/index",
+    "van-datetime-picker": "../../vant_dist/datetime-picker/index",
+
+    "w-cell": "../../wuss_dist/w-cell/index",
+    "w-cell-picker": "../../wuss_dist/w-cell-picker/index",
+    "w-calendar": "../../wuss_dist/w-calendar/index",
+    "w-button": "../../wuss_dist/w-button/index",
+    "w-input": "../../wuss_dist/w-input/index",
+    "w-popup": "../../wuss_dist/w-popup/index",
+
+    "wux-keyboard": "../../wux_dist/keyboard/index",
+    "wux-calendar": "../../wux_dist/calendar/index"
+  }
+}

@@ -1,0 +1,11 @@
+/* pages/submit/index.wxss */
+@import "../../style/bingquan.wxss";
+
+.scroll-view-x {
+  height: 250px;
+  width: 100%;
+}
+
+.scroll-view-y {
+  height: 100%;
+}

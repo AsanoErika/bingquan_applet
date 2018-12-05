@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "我的订单",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "i-spin": "../../dist/spin/index",
+    "van-panel": "../../vant_dist/panel/index",
+    "van-button": "../../vant_dist/button/index",
+    "van-toast": "../../vant_dist/toast/index",    
+    "van-row": "../../vant_dist/row/index",
+    "van-col": "../../vant_dist/col/index"
+  }
+}

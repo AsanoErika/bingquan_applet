@@ -1,0 +1,33 @@
+<!--pages/my/index.wxml-->
+<view class='page'>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <i-card title="{{userInfo.nickname}}" extra="{{userInfo.mobile}}" thumb="{{userInfo.avatar}}" full="true">
+  </i-card>
+
+  <i-panel class="cell-panel-demo" title="账户">
+    <i-cell-group>
+      <i-cell title="账户余额" value="{{userInfo.applet_money}} 元" is-link url="../balance/index"></i-cell>
+      <i-cell title="优惠券" value="{{userInfo.coupon_count}} 张" is-link url="../coupons/index"></i-cell>
+    </i-cell-group>
+  </i-panel>
+
+  <i-panel class="cell-panel-demo" title="订单">
+    <i-cell-group>
+      <i-cell title="我的订单" is-link url="../orders/index"></i-cell>
+      <i-cell title="补款" is-link url="../repay/index"></i-cell>
+    </i-cell-group>
+  </i-panel>
+
+  <i-panel class="cell-panel-demo" title="其他">
+    <i-cell-group>
+      <i-cell title="联系方式" value="电话：010-63727882" bind:click="phoneCall"></i-cell>
+      <i-cell title="设置" is-link url="../settings/index"></i-cell>
+    </i-cell-group>
+  </i-panel>
+
+  <button open-type="contact" class="btn">在线客服</button>
+
+</view>

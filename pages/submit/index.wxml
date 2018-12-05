@@ -1,0 +1,59 @@
+<!--pages/submit/index.wxml-->
+<view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <view class="title-info">商品列表</view>
+
+  <block wx:for="{{list}}" wx:for-item="list" wx:key="id">
+    <van-card wx:if="{{list.is_sale == 0}}" num="{{list.count}}" price="{{list.shop_price}}" desc="{{list.goods_desc}}" title="{{list.goods_name}}" thumb="{{list.goods_img}}"></van-card>
+    <van-card wx:if="{{list.is_sale == 1}}" tag="折扣" origin-price="{{list.market_price}}" num="{{list.count}}" price="{{list.shop_price}}" desc="{{list.goods_desc}}" title="{{list.goods_name}}" thumb="{{list.goods_img}}"></van-card>
+  </block>
+
+  <view class="title-info">优惠方式</view>
+  <van-cell-group>
+    <van-cell bindtap="handleClick" title="优惠券" value="{{discountShow}}" is-link />
+    <van-cell title="合计" value="￥ {{ total_amount }}" border="{{ false }}" />
+    <van-cell title="优惠" value="￥ {{ discount_amount }}" border="{{ false }}" value-class="discount-amount" />
+    <van-cell title="总计" value="￥ {{ final_amount }}" border="{{ false }}" value-class="final-amount" title-class="final-amount" />
+  </van-cell-group>
+
+
+  <view class="title-info">支付方式</view>
+  <van-radio-group value="{{ radio }}" bind:change="onChange">
+    <van-cell-group>
+      <van-cell icon="wechat" title="微信支付" clickable data-name="1" bind:click="onClick">
+        <van-radio name="1" />
+      </van-cell>
+      <van-cell icon="card" title="余额支付" clickable data-name="2" bind:click="onClick">
+        <van-radio name="2" />
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+
+  <view style='height:70px'></view>
+
+  <!-- 付款区 -->
+  <van-submit-bar price="{{ final_amount *100 }}" button-text="付款" bind:submit="goPay">
+    <view class="weui-cell__hd" style="position: relative;margin-left: 10px;">
+      优惠: ￥ {{discount_amount}}
+    </view>
+  </van-submit-bar>
+
+  <!-- 右侧弹出优惠券 -->
+  <w-popup visible="{{ popup }}" position="right" bind:onClose="handleClose">
+    <scroll-view scroll-y class="scroll-view-y">
+      <block wx:for="{{myCoupons}}" wx:for-item="myCoupon" wx:for-index="couponIndex" wx:key="id">
+        <coupon bindtap="selectCoupon" data-cindex="{{couponIndex}}" grey="{{!myCoupon.selected}}" time="{{myCoupon.start_time}} 至 {{myCoupon.end_time}}" amount="￥{{myCoupon.money}}" info="{{myCoupon.name}}" action="选择" couponType="满减" wx:if="{{myCoupon.type_id==1}}"></coupon>
+        <coupon bindtap="selectCoupon" data-cindex="{{couponIndex}}" grey="{{!myCoupon.selected}}" time="{{myCoupon.start_time}} 至 {{myCoupon.end_time}}" amount="{{myCoupon.discount/10}}折" info="{{myCoupon.name}}" action="选择" couponType="折扣" wx:if="{{myCoupon.type_id==2}}"></coupon>
+        <coupon bindtap="selectCoupon" data-cindex="{{couponIndex}}" grey="{{!myCoupon.selected}}" time="{{myCoupon.start_time}} 至 {{myCoupon.end_time}}" amount="￥{{myCoupon.money}}" info="{{myCoupon.name}}" action="选择" couponType="无门槛" wx:if="{{myCoupon.type_id==3}}"></coupon>
+      </block>
+    </scroll-view>
+  </w-popup>
+
+  <!-- 安全键盘 -->
+  <wux-keyboard id="wux-keyboard" />
+
+
+</view>

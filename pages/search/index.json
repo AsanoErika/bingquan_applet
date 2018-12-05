@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "搜索商品",
+  "usingComponents": {
+    "i-spin": "../../dist/spin/index",
+    "van-toast": "../../vant_dist/toast/index",
+    "van-card": "../../vant_dist/card/index",
+    "van-button": "../../vant_dist/button/index",
+    "van-search": "../../vant_dist/search/index"
+  }
+}

@@ -1,0 +1,63 @@
+<!--pages/orders/detail.wxml-->
+<view>
+
+  <!-- 加载 -->
+  <view class="container" wx:if="{{ spinShow }}">
+    <i-spin fix></i-spin>
+  </view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <!-- 安全键盘 -->
+  <wux-keyboard id="wux-keyboard" />
+
+  <view class="title-info">订单状态</view>
+  <view class="status-box">
+    <view wx:if="{{countShow}}" style="margin-top:-20px;">
+      <i-count-down countdown-class="count-down" target="{{targetTime}}" clear-timer="{{clearTimer}}"></i-count-down>
+    </view>
+    <wux-icon size="64" type="{{orderIcon}}" />
+    <view>{{orderStatus}}</view>
+  </view>
+
+  <view class="title-info">商品列表</view>
+  <block wx:for="{{orderDetail.order_goods}}" wx:for-item="good" wx:key="{{good.id}}">
+    <!-- <van-card num="{{good.goods_num}}" price="{{good.shop_price}}" desc="描述信息" title="{{good.goods_name}}" thumb="{{good.goods_thumb}}"></van-card> -->
+    <van-card wx:if="{{good.is_sale == 0}}" num="{{good.goods_num}}" price="{{good.shop_price}}" desc="描述信息" title="{{good.goods_name}}" thumb="{{good.goods_thumb}}"></van-card>
+    <van-card wx:if="{{good.is_sale == 1}}" tag="折扣" origin-price="{{good.market_price}}" num="{{good.goods_num}}" price="{{good.shop_price}}" desc="描述信息" title="{{goood.goods_name}}" thumb="{{good.goods_thumb}}"></van-card>
+  </block>
+
+  <view class="title-info">优惠方式</view>
+  <van-cell-group>
+    <van-cell title="合计" value="￥ {{ orderDetail.order_info.total_amount }}" />
+    <van-cell title="优惠券" value="{{ orderDetail.order_info.coupon_name }}" />
+    <van-cell title="优惠金额" value="{{ orderDetail.order_info.coupon_amount }}" value-class="discount-amount" />
+    <van-cell title="总计" value="￥ {{ orderDetail.order_info.final_amount }}" border="{{ false }}" value-class="final-amount" title-class="final-amount" />
+  </van-cell-group>
+
+  <!-- 可付款时显示 -->
+  <view wx:if="{{orderDetail.order_info.pay_status == 0}}">
+    <view class="title-info">支付方式</view>
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-cell-group>
+        <van-cell icon="wechat" title="微信支付" clickable data-name="1" bind:click="onClick">
+          <van-radio name="1" />
+        </van-cell>
+        <van-cell icon="card" title="余额支付" clickable data-name="2" bind:click="onClick">
+          <van-radio name="2" />
+        </van-cell>
+      </van-cell-group>
+    </van-radio-group>
+
+    <view style='height:70px'></view>
+
+    <!-- 付款区 -->
+    <van-submit-bar price="{{ orderDetail.order_info.final_amount *100 }}" button-text="付款" bind:submit="goPay">
+      <view class="weui-cell__hd" style="position: relative;margin-left: 10px;">
+        优惠: ￥ {{ orderDetail.order_info.coupon_amount }}
+      </view>
+    </van-submit-bar>
+  </view>
+
+</view>

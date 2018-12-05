@@ -1,0 +1,53 @@
+<!--pages/login/index.wxml-->
+<view class="page">
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <view class="page__hd">
+    <view class="page__title">Login</view>
+    <view class="page__desc">登录</view>
+  </view>
+
+  <view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input weui-cell_vcode">
+        <view class="weui-cell__hd">
+          <view class="weui-label">手机号</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindinput="bindPhoneInput" class="weui-input" placeholder="请输入手机号" />
+        </view>
+        <view class="weui-cell__ft">
+          <button class="weui-vcode-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{ c2 || '获取验证码' }}</button>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">验证码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindinput="bindSmsCode" class="weui-input" placeholder="请输入收到的验证码" />
+        </view>
+      </view>
+    </view>
+
+    <checkbox-group bindchange="bindAgreeChange">
+      <label class="weui-agree" for="weuiAgree">
+        <view class="weui-agree__text">
+          <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+          <view class="weui-agree__checkbox-icon">
+            <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+          </view>
+          阅读并同意
+          <navigator url="../readme/recharge" class="weui-agree__link">《服务协议》</navigator>
+        </view>
+      </label>
+    </checkbox-group>
+    <view class="page__bd page__bd_spacing">
+      <button bindtap='getLoginInfo' class="weui-btn" type="primary">登 录</button>
+    </view>
+  </view>
+
+</view>

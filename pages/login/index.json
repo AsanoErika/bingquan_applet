@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "登录",
+  "usingComponents": {
+    "van-toast": "../../vant_dist/toast/index"
+  }
+}

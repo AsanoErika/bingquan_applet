@@ -1,0 +1,30 @@
+/* pages/balance/index.wxss */
+@import "../../style/weui.wxss";
+@import "../../style/bingquan.wxss";
+
+.balance-content {
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 30px;
+  background-color: #fff;
+}
+
+.recharge-content {
+  padding: 10px 15px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.recharge-amount {
+  border: 1px solid #b20000;
+  border-radius: 10px;
+  margin-top:5px;
+  margin-bottom: 5px;
+  height: 30px;
+  line-height: 30px; 
+}
+
+.recharge-active {
+  background-color:#b20000; 
+  color: #fff;
+}

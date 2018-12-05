@@ -1,0 +1,3 @@
+/* pages/repay/index.wxss */
+@import "../../style/weui.wxss";
+@import "../../style/bingquan.wxss";

@@ -1,0 +1,6 @@
+<view class="van-stepper custom-class">
+  <wux-icon class="minus-class van-stepper__minus" bind:tap="onMinus" size="25" color="#b20000" type="{{ minusDisabled ? 'ios-remove-circle-outline' : 'ios-remove-circle' }}" />
+  <input type="{{ integer ? 'number' : 'digit' }}" class="input-class van-stepper__input {{ disabled || disableInput ? 'van-stepper__input--disabled' : '' }}" value="{{ value }}" disabled="{{ disabled || disableInput }}" bindinput="onInput" bind:blur="onBlur"
+  />
+  <wux-icon class="plus-class van-stepper__plus" bind:tap="onPlus" size="25" color="#b20000" type="{{ plusDisabled ? 'ios-add-circle-outline' : 'ios-add-circle' }}" />
+</view>

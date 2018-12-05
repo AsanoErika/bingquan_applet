@@ -1,0 +1,12 @@
+/* pages/login/index.wxss */
+@import "../../style/weui.wxss";
+
+.getcode {
+  display: inline-block;
+  padding: 0 0.6em 0 0.7em;
+  border-left: 1px solid #e5e5e5;
+  line-height: 2.58823529em;
+  font-size: 17px;
+  color: #3cc51f;
+  white-space: nowrap;
+}

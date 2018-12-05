@@ -1,0 +1,15 @@
+/* pages/orders/detail.wxss */
+@import "../../style/bingquan.wxss";
+
+.status-box {
+  padding: 10px 15px;
+  text-align: center;
+  background-color: #fff;
+  color: #666;
+  font-size: 14px;
+}
+
+.count-down {
+  font-size: 20px;
+  color: #b20000;
+}

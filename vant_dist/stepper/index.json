@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wux-icon": "../../wux_dist/icon/index"
+  }
+
+}

@@ -1,0 +1,115 @@
+<!--pages/shelf1/index.wxml-->
+<view>
+  <!-- 加载 -->
+  <view class="container" wx:if="{{ spinShow }}">
+    <i-spin fix></i-spin>
+  </view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <!-- 广告 -->
+  <w-dialog visible="{{ adShow }}" bind:onClose="closeAd">
+    <view style="width:60rpx;height:60rpx;position:absolute;top:-60rpx;right:-60rpx;">
+      <wux-icon type="ios-close-circle-outline" size='28' color="#9f9261" bindtap="closeAd" />
+    </view>
+    <view class="" hover-class="none" hover-stop-propagation="false" style="margin-bottom: -10px;" bindtap="gotoActivity">
+      <image style="width: 100%;height:100%" class="" src="{{ adImg }}"></image>
+    </view>
+  </w-dialog>
+
+  <!-- 通知 -->
+  <w-notice visible="{{ noticeShow }}" icon="voice" mode="closeable" text="{{ noticeContent }}" bindclose="noticeClose" speed="20" />
+
+  <!-- 商品列表 -->
+  <w-tabs currentIndex="{{ currentIndex }}" bind:onChange="handleChange" bind:onClick="handleClick" options="{{ tabs }}" activeColor="#b20000" />
+  <w-scrollable-tab-view bind:onChange="handleScrollableChange" height="{{ pageHeight }}" currentIndex="{{ currentIndex }}" options="{{ options }}">
+    <block wx:for="{{categories}}" wx:for-item="category" wx:key="id">
+      <scroll-view scroll-y class="w-scrollable-tab-view-container" slot="{{category.name}}" hover-class="none" hover-stop-propagation="false">
+        <block wx:for="{{goodslist}}" wx:for-item="item" wx:key="goods_id">
+          <view class="weui-grid" wx:if="{{item.type_id == category.id}}">
+            <image style="display:block;width:50px;height:50px;margin:0 auto;" src="{{item.goods_img}}" />
+            <view class="weui-grid__label">{{item.goods_name}}</view>
+            <view style='text-align:center'>
+              <text>{{ item.shop_price }}</text>
+              <text style="color:#666;text-decoration:line-through;margin-left:5px;" wx:if="{{item.is_sale == 1}}">{{ item.market_price }}</text>
+              <van-stepper id="{{item.goods_id}}" value="0" integer min="0" max="{{item.current_qty}}" step="1" bind:blur="onBlur" bind:change="onChange" bindtap="onPlus" data-bar_code="{{item.bar_code}}" data-goods_name="{{item.goods_name}}" data-shop_price="{{item.shop_price}}"
+                data-goods_id="{{item.goods_id}}" data-max_qty="{{item.current_qty}}" wx:if="{{item.count == 0}}" disable-input="true">
+              </van-stepper>
+              <van-stepper id="{{item.goods_id}}" value="{{item.count}}" integer min="0" max="{{item.current_qty}} " step="1" bind:blur="onBlur" bind:change="onChange" bindtap="onPlus" data-bar_code="{{item.bar_code}}" data-goods_name="{{item.goods_name}}" data-shop_price="{{item.shop_price}}"
+                data-goods_id="{{item.goods_id}}" data-max_qty="{{item.current_qty}}" wx:if="{{item.count != 0}}" disable-input="true">
+              </van-stepper>
+            </view>
+            <van-tag mark color="#b20000" style="position:absolute;left:0px;top:0px;" wx:if="{{item.is_sale == 1}}">折扣</van-tag>
+          </view>
+        </block>
+        <view style="clear:both"></view>
+        <view style='height:100px;width:100%'></view>
+      </scroll-view>
+    </block>
+  </w-scrollable-tab-view>
+
+  <movable-area>
+    <movable-view x="0" y="200" direction="vertical">
+      <!-- 搜索 -->
+      <view bindtap='searchGoods' class="search-box1">
+        <image class="search-img1" src="../../img/nav/search.png"></image>
+      </view>
+      <view style='height:20px;'></view>
+      <!-- 二维码 -->
+      <view bindtap='scanCode' class="scan-box1">
+        <image class="scan-img1" src="../../img/nav/code.png"></image>
+      </view>
+    </movable-view>
+  </movable-area>
+
+
+  <!-- 购物车 -->
+  <van-transition name="fade-up" show="{{show}}" name="fade-up" custom-class="shopping-cart">
+    <van-submit-bar price="{{ totalprice }}" button-text="提交订单" bind:submit="goSubmit">
+
+      <view class="weui-cell__hd" style="position: relative;margin-left: 10px;" bindtap='showList'>
+        <wux-icon size="40" color="#b20000" type="ios-cart" />
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{totalcount}}</view>
+      </view>
+
+    </van-submit-bar>
+  </van-transition>
+
+  <!-- 弹出货品清单 -->
+  <van-popup show="{{ popupshow }}" position="bottom" bind:close="onClose" close-on-click-overlay="true">
+    <view class="cart-list">
+      <view style="padding:5px 10px;border-bottom:1rpx solid #d9d9d9">
+        <van-row>
+          <van-col span="12" class='cartlist-title'>商品列表</van-col>
+          <van-col span="12" class='cartlist-clear' style="text-align:right;">
+            <text bindtap='clearCart'>清空购物车</text>
+          </van-col>
+        </van-row>
+      </view>
+
+      <block wx:for="{{goodslist}}" wx:for-item="item" wx:key="goods_id">
+        <view style="height:50px;padding:10px;border-bottom:1rpx solid #d9d9d9" wx:if="{{item.count > 0}}">
+          <van-row>
+            <van-col span="4">
+              <image class="cartlist-img" src="{{item.goods_img}}" />
+            </van-col>
+            <van-col span="12">
+              <view class="cartlist-name">{{item.goods_name}}</view>
+              <view>
+                <text>{{ item.shop_price }}</text>
+                <text style="color:#666;text-decoration:line-through;margin-left:5px;" wx:if="{{item.is_sale == 1}}">{{ item.market_price }}</text>
+              </view>
+            </van-col>
+            <van-col span="8" style="text-align:right;">
+              <van-stepper id="{{item.goods_id}}" value="{{item.count}}" integer min="0" max="{{item.current_qty}}" step="1" bind:change="onChange" data-bar_code="{{item.bar_code}}" data-goods_name="{{item.goods_name}}" data-shop_price="{{item.shop_price}}" data-goods_id="{{item.goods_id}}"
+              />
+            </van-col>
+          </van-row>
+        </view>
+      </block>
+
+    </view>
+  </van-popup>
+
+</view>

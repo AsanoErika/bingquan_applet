@@ -1,0 +1,43 @@
+<!--pages/coupons/index.wxml-->
+<view>
+
+  <!-- 加载 -->
+  <view class="container" wx:if="{{ spinShow }}">
+    <i-spin fix></i-spin>
+  </view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+
+  <!-- 优惠券列表 -->
+  <w-tabs currentIndex="{{ currentIndex }}" bind:onChange="handleChange" bind:onClick="handleClick" options="{{ tabs }}" activeColor="#b20000" />
+
+  <w-scrollable-tab-view bind:onChange="handleScrollableChange" height="{{ pageHeight }}" currentIndex="{{ currentIndex }}" options="{{ options }}">
+    <scroll-view scroll-y class="w-scrollable-tab-view-container" slot="可领取" hover-class="none" hover-stop-propagation="false">
+      <block wx:for="{{unreceivedCoupons}}" wx:for-item="unreceivedCoupon" wx:key="id">
+        <coupon bindtap="getCoupon" data-id="{{unreceivedCoupon.id}}" time="{{unreceivedCoupon.start_time}} 至 {{unreceivedCoupon.end_time}}" amount="￥{{unreceivedCoupon.money}}" info="{{unreceivedCoupon.name}}" action="立即领取" couponType="满减" wx:if="{{unreceivedCoupon.type_id==1}}"></coupon>
+        <coupon bindtap="getCoupon" data-id="{{unreceivedCoupon.id}}" time="{{unreceivedCoupon.start_time}} 至 {{unreceivedCoupon.end_time}}" amount="{{unreceivedCoupon.discount/10}}折" info="{{unreceivedCoupon.name}}" action="立即领取" couponType="折扣" wx:if="{{unreceivedCoupon.type_id==2}}"></coupon>
+        <coupon bindtap="getCoupon" data-id="{{unreceivedCoupon.id}}" time="{{unreceivedCoupon.start_time}} 至 {{unreceivedCoupon.end_time}}" amount="￥{{unreceivedCoupon.money}}" info="{{unreceivedCoupon.name}}" action="立即领取" couponType="无门槛" wx:if="{{unreceivedCoupon.type_id==3}}"></coupon>
+      </block>
+    </scroll-view>
+    <scroll-view scroll-y class="w-scrollable-tab-view-container" slot="可使用" hover-class="none" hover-stop-propagation="false">
+      <block wx:for="{{myCoupons}}" wx:for-item="myCoupon" wx:key="id">
+        <coupon time="{{myCoupon.start_time}} 至 {{myCoupon.end_time}}" amount="￥{{myCoupon.money}}" info="{{myCoupon.name}}" action="去使用" couponType="满减" wx:if="{{myCoupon.type_id==1}}" bindtap="gotoShelf"></coupon>
+        <coupon time="{{myCoupon.start_time}} 至 {{myCoupon.end_time}}" amount="{{myCoupon.discount/10}}折" info="{{myCoupon.name}}" action="去使用" couponType="折扣" wx:if="{{myCoupon.type_id==2}}" bindtap="gotoShelf"></coupon>
+        <coupon time="{{myCoupon.start_time}} 至 {{myCoupon.end_time}}" amount="￥{{myCoupon.money}}" info="{{myCoupon.name}}" action="去使用" couponType="无门槛" wx:if="{{myCoupon.type_id==3}}" bindtap="gotoShelf"></coupon>
+      </block>
+    </scroll-view>
+    <scroll-view scroll-y class="w-scrollable-tab-view-container" slot="已过期" hover-class="none" hover-stop-propagation="false">
+      <block wx:for="{{expiredCoupons}}" wx:for-item="expiredCoupon" wx:key="id">
+        <coupon time="{{expiredCoupon.start_time}} 至 {{expiredCoupon.end_time}}" amount="￥{{expiredCoupon.money}}" info="{{expiredCoupon.name}}" action="已过期" couponType="满减" wx:if="{{expiredCoupon.type_id==1}}" grey="true"></coupon>
+        <coupon time="{{expiredCoupon.start_time}} 至 {{expiredCoupon.end_time}}" amount="{{expiredCoupon.discount/10}}折" info="{{expiredCoupon.name}}" action="已过期" couponType="折扣" wx:if="{{expiredCoupon.type_id==2}}" grey="true"></coupon>
+        <coupon time="{{expiredCoupon.start_time}} 至 {{expiredCoupon.end_time}}" amount="￥{{expiredCoupon.money}}" info="{{expiredCoupon.name}}" action="已过期" couponType="无门槛" wx:if="{{expiredCoupon.type_id==3}}" grey="true"></coupon>
+      </block>
+    </scroll-view>
+  </w-scrollable-tab-view>
+
+
+
+
+</view>

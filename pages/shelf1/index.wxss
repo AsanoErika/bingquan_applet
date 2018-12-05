@@ -1,0 +1,186 @@
+/* pages/shelf1/index.wxss */
+@import "../../style/weui.wxss";
+
+.scan-box {
+  position: fixed;
+  right: 50rpx;
+  bottom: 150rpx;
+  z-index: 50;
+  width: 40rpx;
+  height: 40rpx;
+  background: #b20000;
+  display: flex;
+  flex-direction: column;
+  padding: 25rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px #888;
+}
+
+.scan-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.search-box {
+  position: fixed;
+  right: 50rpx;
+  bottom: 300rpx;
+  z-index: 50;
+  width: 40rpx;
+  height: 40rpx;
+  background: #b20000;
+  display: flex;
+  flex-direction: column;
+  padding: 25rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px #888;
+}
+
+.search-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.shopping-cart {
+  z-index: 200;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.cart-list {
+  margin-bottom: 50px;
+  background-color: #fff;
+}
+
+.cartlist-img {
+  width: 50px;
+  height: 50px;
+}
+
+.cartlist-name {
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.cartlist-title {
+  color: #666;
+}
+
+.cartlist-clear {
+  text-align: right;
+  color: #b20000;
+}
+
+movable-area {
+  height: 300rpx;
+  width: 0rpx;
+  position: fixed;
+  right: 140rpx;
+  bottom: 340rpx;
+}
+
+movable-view {
+  bottom: 10px;
+}
+
+.scan-box1 {
+  /* position: fixed; */
+  right: 50rpx;
+  bottom: 150rpx;
+  z-index: 50;
+  width: 40rpx;
+  height: 40rpx;
+  background: #b20000;
+  display: flex;
+  flex-direction: column;
+  padding: 25rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px #888;
+}
+
+.scan-img1 {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.search-box1 {
+  /* position: fixed; */
+  right: 50rpx;
+  bottom: 300rpx;
+  z-index: 50;
+  width: 40rpx;
+  height: 40rpx;
+  background: #b20000;
+  display: flex;
+  flex-direction: column;
+  padding: 25rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px #888;
+}
+
+.search-img1 {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.w-scrollable-tab-view-container {
+  width: 100%;
+  height: 100%;
+  /* padding: 10px 0; */
+  overflow: auto;
+}
+
+.w-scrollable-tab-view-bar {
+  display: block;
+  overflow: hidden;
+}
+
+page {
+  padding: 0;
+  margin: 0;
+}
+
+.scroll-view_H {
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 200px;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.scroll-view-item_H {
+  width: 50%;
+  height: 100%;
+}
+
+.bc_green {
+  background-color: green;
+}
+
+.bc_red {
+  background-color: red;
+}
+
+.bc_yellow {
+  background-color: yellow;
+}
+
+.bc_blue {
+  background-color: blue;
+}
+
+.content {
+  padding: 20rpx 40rpx;
+}

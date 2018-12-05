@@ -1,0 +1,19 @@
+.title-info {
+  margin-left: 5px;
+  color: #999;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.discount-amount {
+  color: #b20000;
+}
+
+.final-amount {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.background-white {
+  background-color: #fff;
+}

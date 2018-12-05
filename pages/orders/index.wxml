@@ -1,0 +1,32 @@
+<!--pages/orders/index.wxml-->
+<view>
+
+  <!-- 加载 -->
+  <view class="container" wx:if="{{ spinShow }}">
+    <i-spin fix></i-spin>
+  </view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <block wx:for="{{orderList}}" wx:for-item="orderList" wx:key="order_id">
+    <view style="height:10px"></view>
+    <van-panel title="{{orderList.add_time}}" status="{{orderList.status_name}}" use-footer-slot bindtap="gotoDetail" data-id="{{orderList.order_id}}">
+      <view class="content-box">
+        <block wx:for="{{orderList.goods_list}}" wx:for-item="good" wx:key="goods_id">
+          <image src="{{good.goods_thumb}}" class="content-img" style="margin-right:10px" />
+        </block>
+      </view>
+      <view slot="footer">
+        <van-row>
+          <van-col span="12" style="height:22px;line-height:22px;">共{{orderList.goods_num}}件，￥{{orderList.final_amount}}</van-col>
+          <van-col span="12" style="text-align:right">
+            <!-- <van-button size="small">按钮</van-button> -->
+            <van-button round size="mini" type="bingquan" wx:if="{{orderList.pay_status == 0}}">去付款</van-button>
+          </van-col>
+        </van-row>
+      </view>
+    </van-panel>
+  </block>
+
+</view>

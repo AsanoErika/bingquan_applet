@@ -1,0 +1,9 @@
+@import "../../style/weui.wxss";
+
+page {
+  background-color: #eee;
+}
+
+.info-box {
+  background-color: #fff;
+}

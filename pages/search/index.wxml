@@ -1,0 +1,27 @@
+<!--pages/search/index.wxml-->
+<view>
+  <!-- 加载 -->
+  <view class="container" wx:if="{{ spinShow }}">
+    <i-spin fix></i-spin>
+  </view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <!-- 搜索框 -->
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" />
+
+  <!-- 搜索结果 -->
+  <block wx:for="{{searchResult}}" wx:for-item="list" wx:key="*this">
+    <van-card wx:if="{{list.is_sale == 0}}" num="{{list.current_qty}}" price="{{list.shop_price}}" desc="在 {{list.type_name}} 分类下" title="{{list.goods_name}}" thumb="{{list.goods_img}}">
+      <view slot="footer">
+        <van-button size="mini" type="bingquan" round bindtap="changeCat" data-typeid="{{list.type_id}}">去购买</van-button>
+      </view>
+    </van-card>
+    <van-card wx:if="{{list.is_sale == 1}}" tag="折扣" origin-price="{{list.market_price}}" num="{{list.current_qty}}" price="{{list.shop_price}}" desc="在 {{list.type_name}} 分类下" title="{{list.goods_name}}" thumb="{{list.goods_img}}">
+      <view slot="footer">
+        <van-button size="mini" type="bingquan" round bindtap="changeCat" data-typeid="{{list.type_id}}">去购买</van-button>
+      </view>
+    </van-card>
+  </block>
+</view>

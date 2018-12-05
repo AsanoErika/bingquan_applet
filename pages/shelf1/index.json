@@ -1,0 +1,35 @@
+{
+  "enablePullDownRefresh": false,
+  "disableScroll": true,
+  "usingComponents": {
+    "w-tabs": "../../wuss_dist/w-tabs/index",
+    "w-segmented-control": "../../wuss_dist/w-segmented-control/index",
+    "w-scrollable-tab-view": "../../wuss_dist/w-scrollable-tab-view/index",
+    "w-number": "../../wuss_dist/w-number/index",
+    "w-dialog": "../../wuss_dist/w-dialog/index",
+    "w-notice": "../../wuss_dist/w-notice/index",
+    "w-icon": "../../wuss_dist/w-icon/index",
+    
+    "i-tag": "../../dist/tag/index",
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index",
+    "i-spin": "../../dist/spin/index",
+
+    "van-nav-bar": "../../vant_dist/nav-bar/index",
+    "van-tab": "../../vant_dist/tab/index",
+    "van-tabs": "../../vant_dist/tabs/index",
+    "van-stepper": "../../vant_dist/stepper/index",
+    "van-transition": "../../vant_dist/transition/index",
+    "van-submit-bar": "../../vant_dist/submit-bar/index",
+    "van-tag": "../../vant_dist/tag/index",
+    "van-popup": "../../vant_dist/popup/index",
+    "van-toast": "../../vant_dist/toast/index",
+    "van-row": "../../vant_dist/row/index",
+    "van-col": "../../vant_dist/col/index",
+
+    "wux-cell-group": "../../wux_dist/cell-group/index",
+    "wux-cell": "../../wux_dist/cell/index",
+    "wux-input-number": "../../wux_dist/input-number/index",
+    "wux-icon": "../../wux_dist/icon/index"
+  }
+}

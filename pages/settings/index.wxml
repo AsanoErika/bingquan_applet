@@ -1,0 +1,11 @@
+<!--pages/settings/index.wxml-->
+<view class='page'>
+
+  <i-panel class="cell-panel-demo" title="密码设置">
+    <i-cell-group>
+      <i-cell title="付款码设置" value="{{ passShow }}" is-link url="../settings/password"></i-cell>
+    </i-cell-group>
+  </i-panel>
+
+
+</view>

@@ -1,0 +1,20 @@
+<!--dist/coupon/index.wxml-->
+<view class="coupon-item" style="margin:20px;">
+  <view class="style-one {{ grey ? 'have' : '' }}">
+    <view class="info-box">
+      <view class="nick" style="font-size: 10px;">{{time}}</view>
+      <view class="coupon-money">
+        <view class="lay of">
+          <em class="amount">{{amount}}</em>
+        </view>
+        <view class="lay">
+          <view class="tit" style="font-size: 12px;height:20px;line-height:20px;">{{couponType}}</view>
+          <view class="demand" style="font-size: 12px;height:20px;line-height:20px;">{{info}}</view>
+        </view>
+      </view>
+    </view>
+    <view href="javascript:;" class="get-btn">
+      <view class="receive">{{action}}</view>
+    </view>
+  </view>
+</view>

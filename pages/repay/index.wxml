@@ -1,0 +1,41 @@
+<!--pages/repay/index.wxml-->
+<view>
+  <!-- 加载 -->
+  <view class="container" wx:if="{{ spinShow }}">
+    <i-spin fix></i-spin>
+  </view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <!-- 选择区 -->
+  <view class="title-info">补款选项</view>
+  <w-cell-group>
+    <w-cell-picker label="选择货柜" placeholder="请选择货柜" options="{{ options }}" title="请选择货柜" bind:onChange="changeShelf" bind:onSelect="confirmShelf" />
+    <w-cell isLink label="选择日期" highlight content="{{ timePicked }}" bind:onClick="openTimePicker" />
+    <w-input extra="￥" type="digit" bindextraClick="extraClick" placeholder="0" label="金额" bindonChange="iChange" />
+  </w-cell-group>
+
+  <view class="title-info">支付方式</view>
+  <van-radio-group value="{{ radio }}" bind:change="onChange">
+    <van-cell-group>
+      <van-cell icon="wechat" title="微信支付" clickable data-name="1" bind:click="onClick">
+        <van-radio name="1" />
+      </van-cell>
+      <van-cell icon="card" title="余额支付" clickable data-name="2" bind:click="onClick">
+        <van-radio name="2" />
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+
+  <!-- 补款按钮 -->
+  <w-button circle bgColor="#b20000" color="#ffffff" bindtap="repay">补款</w-button>
+
+  <!-- 日期选择器 -->
+  <w-popup visible="{{ tpPopup }}" position="bottom" bind:onClose="handleClose">
+      <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="onConfirm" bind:cancel="onCancel" />
+  </w-popup>
+
+  <!-- 安全键盘 -->
+  <wux-keyboard id="wux-keyboard" />
+</view>

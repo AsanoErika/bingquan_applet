@@ -1,0 +1,48 @@
+<!--pages/balance/index.wxml-->
+<view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <view class="title-info">账户余额</view>
+  <view class="balance-content">￥{{balance}}</view>
+
+  <view class="title-info">充值金额</view>
+  <view class="recharge-content">
+    <van-row gutter="10">
+      <block wx:for="{{rechargeChoice}}" wx:for-item="choice" wx:key="choiceIndex">
+        <van-col span="8" data-amount="{{choice.rechargeAmount}}" bindtap="selectIndex">
+          <view class="recharge-amount {{choice.rechargeAmount == amountSelected?'recharge-active':''}}">
+            ￥{{choice.rechargeAmount}}
+          </view>
+        </van-col>
+      </block>
+    </van-row>
+  </view>
+
+  <view class="title-info">支付方式</view>
+  <van-radio-group value="{{ radio }}" bind:change="onChange">
+    <van-cell-group>
+      <van-cell icon="wechat" title="微信支付" clickable data-name="1" bind:click="onClick">
+        <van-radio name="1" />
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+
+  <checkbox-group bindchange="bindAgreeChange">
+    <label class="weui-agree" for="weuiAgree">
+      <view class="weui-agree__text">
+        <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+        <view class="weui-agree__checkbox-icon">
+          <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+        </view>
+        支付前请阅读并同意
+        <navigator url="../readme/recharge" class="weui-agree__link">《充值协议》</navigator>
+      </view>
+    </label>
+  </checkbox-group>
+
+  <!-- 充值按钮 -->
+  <w-button circle bgColor="#b20000" color="#ffffff" bindtap="recharge">充值</w-button>
+
+</view>

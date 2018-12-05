@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "兵圈购",
+  "enablePullDownRefresh": false,
+  "disableScroll": true,
+  "usingComponents": {
+    "van-toast": "../../vant_dist/toast/index"
+  }
+}

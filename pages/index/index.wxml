@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view>
+
+  <!-- toast -->
+  <van-toast id="van-toast" />
+
+  <view class="enter-box">
+    <view class="enter-btn" bindtap="scanShelf">进入兵圈购</view>
+  </view>
+
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <!-- <view class="weui-footer__links">
+      <navigator url="" class="weui-footer__link">花间一壶酒，独酌无相亲。</navigator>
+    </view> -->
+    <view class="weui-footer__text">Copyright © 2018-2019 bingquannet.com</view>
+  </view>
+
+</view>

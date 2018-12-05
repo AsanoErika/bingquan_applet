@@ -1,0 +1,56 @@
+@import "../../style/weui.wxss";
+
+.scan-box {
+  position: fixed;
+  right: 50rpx;
+  bottom: 150rpx;
+  z-index: 50;
+  width: 50rpx;
+  height: 50rpx;
+  background: #b20000;
+  display: flex;
+  flex-direction: column;
+  padding: 25rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px #888;
+}
+
+.scan-img {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.search-box {
+  position: fixed;
+  right: 50rpx;
+  bottom: 300rpx;
+  z-index: 50;
+  width: 50rpx;
+  height: 50rpx;
+  background: #b20000;
+  display: flex;
+  flex-direction: column;
+  padding: 25rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px #888;
+}
+
+.search-img {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.shopping-cart {
+  z-index: 200;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.cart-list {
+  margin-bottom: 50px;
+  background-color: #fff
+}

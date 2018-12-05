@@ -1,0 +1,19 @@
+{
+  "navigationBarTitleText": "账户余额",
+  "usingComponents": {
+    "van-row": "../../vant_dist/row/index",
+    "van-col": "../../vant_dist/col/index",
+
+    "van-toast": "../../vant_dist/toast/index",
+    "van-cell": "../../vant_dist/cell/index",
+    "van-cell-group": "../../vant_dist/cell-group/index",
+    "van-radio": "../../vant_dist/radio/index",
+    "van-radio-group": "../../vant_dist/radio-group/index",
+    "van-card": "../../vant_dist/card/index",
+    "van-button": "../../vant_dist/button/index",
+    "van-submit-bar": "../../vant_dist/submit-bar/index",
+    "w-popup": "../../wuss_dist/w-popup/index",
+    "w-button": "../../wuss_dist/w-button/index",
+    "wux-keyboard": "../../wux_dist/keyboard/index"
+  }
+}
